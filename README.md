@@ -2,7 +2,7 @@
 
 [![license](https://img.shields.io/badge/license-MIT-3B82F6)](LICENSE)
 [![dsh](https://img.shields.io/badge/DeepSeek%20Harness-%3E%3D0.2.0--rc.1-10B981)](https://github.com/chenbocheng2568-dot/dsh-threebody-boot)
-[![size](https://img.shields.io/badge/package-2.7%20MB-6B7280)](#为什么只有-27-mb)
+[![size](https://img.shields.io/badge/package-2.8%20MB-6B7280)](#为什么只有-28-mb)
 
 打开 DeepSeek Harness 时，先放一段《三体》游戏的启动界面：三颗星沿 8 字轨道彼此追逐，「三体」标题从模糊里浮现，接着是登录页——身份栏写着你的 ID，点「进入」后扫描验证，穿过轨道中心落到荒原上，再淡入 DSH。
 
@@ -21,12 +21,12 @@
 | **收尾** | 验证通过后显示「登录成功 · 欢迎你，××」，停在群山远景；装了同套件的皮肤时，远景用 2.8 秒淡成界面上的虚影 |
 | **可关闭** | 设成「关闭」就完全跳过，不留黑帧、不拖慢启动 |
 
-### 为什么只有 2.7 MB
+### 为什么只有 2.8 MB
 
 | 做法 | 体积 |
 |---|---|
 | 0.1.x：把渲染好的视频塞进插件 | 约 19 MB |
-| 0.3.x：只带代码与音轨，画面实时画出来 | 约 2.7 MB |
+| 0.3.x：只带代码与音轨，画面实时画出来 | 约 2.8 MB |
 
 音轨是 AAC 192k（1.1 MB）、登录等待的循环底噪是 10 秒 24 kHz WAV（0.94 MB），其余是打包后的播放器（299 KB）和中文字体子集（382 KB）。
 
