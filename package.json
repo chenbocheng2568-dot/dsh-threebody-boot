@@ -1,0 +1,113 @@
+{
+  "name": "dsh-threebody-boot",
+  "version": "0.3.1",
+  "description": "三体启动片头 for DeepSeek Harness：打开客户端先实时渲染一段《三体》游戏启动界面（30 fps，不是视频），登录页停下等你点「进入」并显示自定义身份 ID，结尾停在群山远景；精简约 31 秒 / 完整约 48 秒 / 可关闭。 | Three-Body boot splash for DSH: a real-time rendered (not video) game-boot sequence with an interactive login gate showing your own ID.",
+  "type": "module",
+  "main": "./lib/index.js",
+  "exports": {
+    ".": "./lib/index.js",
+    "./client": "./lib/client.js",
+    "./cordis.patch.yml": "./cordis.patch.yml",
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "lib",
+    "media",
+    "cordis.patch.yml",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "three-body",
+    "三体",
+    "suite",
+    "boot-animation",
+    "splash",
+    "login",
+    "login-animation",
+    "开机动画",
+    "启动动画",
+    "皮肤套装"
+  ],
+  "engines": {
+    "node": ">=20"
+  },
+  "peerDependencies": {
+    "react": "^18.2.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  },
+  "dsh": {
+    "engines": {
+      "dsh": ">=0.2.0-rc.1"
+    },
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-slots",
+        "@deepseek-ai/dsh-client-ui-settings"
+      ],
+      "platform": "web"
+    }
+  },
+  "dshWorkshop": {
+    "schema": "omdsh-workshop-package/v1",
+    "type": "plugin",
+    "integration": {
+      "protocol": "harness-profile",
+      "artifact": "cordis.patch.yml"
+    },
+    "install": {
+      "mode": "transactional",
+      "adapter": "profile-bundle",
+      "failurePolicy": "generation-rollback",
+      "touchesCurrentBeforeActivation": false
+    },
+    "lifecycle": {
+      "activation": "restart-profile",
+      "dispose": "supported"
+    },
+    "permissions": [
+      "web:index-inject",
+      "web:http-route",
+      "dom:overlay",
+      "browser:local-storage",
+      "desktop:titlebar-overlay"
+    ],
+    "capability": {
+      "id": "boot-splash-threebody",
+      "kind": "ui",
+      "invocation": "Boot the profile Web GUI and read document.querySelector(\".dshtb-host\"): its shadowRoot .stage holds the live player; the inner stage carries data-frame / data-waiting, and the timeline stops at frame 884 until the 进入 button is clicked.",
+      "expected": "The host half covers the shell while the document parses; the client overlay renders the film live, waits at the login panel showing the configured ID, continues on a mouse click, and fades out (slowly into the skin ghost when dsh-threebody-skin is on)."
+    }
+  },
+  "scripts": {
+    "check": "node --check lib/client.js && node --check lib/index.js",
+    "test": "node scripts/test-host.mjs"
+  },
+  "dependencies": {},
+  "author": {
+    "name": "chenbocheng2568-dot",
+    "url": "https://github.com/chenbocheng2568-dot"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chenbocheng2568-dot/dsh-threebody-boot.git"
+  },
+  "bugs": {
+    "url": "https://github.com/chenbocheng2568-dot/dsh-threebody-boot/issues"
+  },
+  "homepage": "https://github.com/chenbocheng2568-dot/dsh-threebody-boot#readme",
+  "publishConfig": {
+    "access": "public"
+  }
+}

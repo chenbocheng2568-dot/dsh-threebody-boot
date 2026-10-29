@@ -1,0 +1,9 @@
+# Bundle patch for dsh-threebody-boot.
+#
+# The row below mounts the host half (lib/index.js: first-frame cover + media
+# route); the package's `dsh.client` block (package.json) is what gets the
+# browser half (lib/client.js) served and loaded. Both are required — a package
+# that declares only `dsh.client` is not installable.
+- insert:
+    - id: boot-threebody
+      name: dsh-threebody-boot
